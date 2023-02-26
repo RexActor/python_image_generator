@@ -2,6 +2,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 from enum import Enum
 import textwrap
 import time
+# Change
 
 
 class RARITY(Enum):
