@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps
 from enum import Enum
 import textwrap
 import time
@@ -116,9 +116,10 @@ def GenerateImage(_rarity, _ItemName, _itemImageFileName, _itemDamage, _moveSpee
     w, h = ItemImage.size
     Resized_ItemImage = ItemImage.resize(
         (w, h))  # Resizes new imported Image
-
+    # border around picture (if required increase float)
+    newIMg = ImageOps.expand(Resized_ItemImage, (0, 0, 0, 0), fill=rarityColor)
     backgroundImage.paste(
-        Resized_ItemImage, (((width-w)//2), (height-h)//7), mask=Resized_ItemImage)  # Pastes Image on top of Background
+        newIMg, (((width-w)//2), (height-h)//7), mask=newIMg)  # Pastes Image on top of Background
 
 # endregion
 
