@@ -99,14 +99,15 @@ def GenerateImage(_rarity, _ItemName, _itemImageFileName, _itemDamage, _moveSpee
     orangeTextColor = (255, 172, 28, 255)
     whiteTextColor = (255, 255, 255, 255)
     flavourTextColor = (105, 69, 19, 255)
-    modifierColor = GetRarityColor(_rarity, COLORTYPE.BACKGROUND)
+    modifierColor = rarityColor
+
 # endregion
 
 # region CREATE REQUIRED IMAGES AND FIELDS
     backgroundImage = Image.new(mode="RGB", size=(
         width, height), color=(blackColor))  # background image created
-    frontImage = Image.new(mode="RGBA", size=(width, 80),
-                           color=(rarityColor))  # Front page image where is "Rarity colours displayed" is created with Alpha mode
+    # Front page image where is "Rarity colours displayed" is created with Alpha mode
+    frontImage = Image.new(mode="RGBA", size=(width, 80), color=(rarityColor))
     # Adds frontImage on top of background image
     backgroundImage.paste(frontImage, mask=frontImage)
 
@@ -123,6 +124,7 @@ def GenerateImage(_rarity, _ItemName, _itemImageFileName, _itemDamage, _moveSpee
 # region CREATE TOP BOX FOR ITEM NAME
 
     # creates shape size - [(start_position),(end_position)]
+
     lineShape = [(0, 0), (width-1, 80)]
 
     drawboxLine = ImageDraw.Draw(backgroundImage)  # creates instance?
@@ -262,7 +264,7 @@ def GenerateImage(_rarity, _ItemName, _itemImageFileName, _itemDamage, _moveSpee
 
 
 for rarity in RARITY:
-    print(rarity)
+
     GenerateImage(rarity, "Arming Sword", "sword.png", "Damage 40", "Move Speed -100",
                   "Fighter, Cleric", "Primary Weapon",
                   "Double-Handed", "Sword",
