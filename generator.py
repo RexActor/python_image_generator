@@ -73,7 +73,7 @@ def GenerateImage(_rarity, _ItemName, _itemImageFileName, _itemDamage, _moveSpee
         _moveItemOffset = len(_modifierList)*40
 
     height = 770 + _moveItemOffset
-# endregion
+# endregionf
 
 
 # region ASSIGN FONTS
@@ -113,10 +113,12 @@ def GenerateImage(_rarity, _ItemName, _itemImageFileName, _itemDamage, _moveSpee
 
     ItemImage = Image.open(f'{_itemImageFileName}',
                            mode='r')  # Opens Item image
+    w, h = ItemImage.size
     Resized_ItemImage = ItemImage.resize(
-        (100, 200))  # Resizes new imported Image
+        (w, h))  # Resizes new imported Image
+
     backgroundImage.paste(
-        Resized_ItemImage, (width//3, height//8), mask=Resized_ItemImage)  # Pastes Image on top of Background
+        Resized_ItemImage, (((width-w)//2), (height-h)//7), mask=Resized_ItemImage)  # Pastes Image on top of Background
 
 # endregion
 
@@ -181,7 +183,7 @@ def GenerateImage(_rarity, _ItemName, _itemImageFileName, _itemDamage, _moveSpee
 
             DrawLine(width-40, width-30, 440+modifierOffset,
                      backgroundImage, modifierColor)
-            print(f'{item}')
+
             modifierOffset = modifierOffset+40
 
 # endregion
@@ -265,7 +267,7 @@ def GenerateImage(_rarity, _ItemName, _itemImageFileName, _itemDamage, _moveSpee
 
 for rarity in RARITY:
 
-    GenerateImage(rarity, "Arming Sword", "sword.png", "Damage 40", "Move Speed -100",
+    GenerateImage(rarity, "Arming Sword", "neckles.png", "Damage 40", "Move Speed -100",
                   "Fighter, Cleric", "Primary Weapon",
                   "Double-Handed", "Sword",
                   "0.6s/0.56s/0.75s",
