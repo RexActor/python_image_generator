@@ -98,7 +98,7 @@ def GenerateImage(_rarity, _ItemName, _itemImageFileName, _itemDamage, _moveSpee
     orangeTextColor = (255, 172, 28, 255)
     whiteTextColor = (255, 255, 255, 255)
     flavourTextColor = (105, 69, 19, 255)
-    modifierColor = rarityColor
+    modifierColor = GetRarityColor(_rarity, COLORTYPE.BACKGROUND)
 # endregion
 
 # region CREATE REQUIRED IMAGES AND FIELDS
