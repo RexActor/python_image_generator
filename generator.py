@@ -135,7 +135,8 @@ def GenerateImage(_rarity, _ItemName, _itemImageFileName, _itemDamage, _moveSpee
                           width=2, outline=rarityFontColor)  # actually draws rectangle with rarity font color (due that Rarity font color don't have transparency enabled)
 
     ItemNameText = ImageDraw.Draw(backgroundImage)
-    ItemNameText.text((width//4, 20), _ItemName,
+    w = ItemNameText.textlength(_ItemName)
+    ItemNameText.text((((width-w)/2)-20, 20), _ItemName,
                       font=HeaderFont, fill=(rarityFontColor))  # Creates Item name and displays it
 
 # endregion
@@ -266,15 +267,15 @@ def GenerateImage(_rarity, _ItemName, _itemImageFileName, _itemDamage, _moveSpee
     backgroundImage.save('test.png', quality=95)
 
 
-for rarity in RARITY:
+# for rarity in RARITY:
 
-    GenerateImage(rarity, "Arming Sword", "neckles.png", "Damage 40", "Move Speed -100",
-                  "Fighter, Cleric", "Primary Weapon",
-                  "Double-Handed", "Sword",
-                  "0.6s/0.56s/0.75s",
-                  "If you are reading This . Then It means that I finished Image generator script! Was fun! and not that hard!",
-                  [["Up to 5 extra enchantments"], [
-                      "+15 additional Dark Magical Damage"], ["Up to 4 extra enchantments"]]
+GenerateImage(RARITY.UNIQUE, "Neckles", "neckles.png", "Damage 8%", "Move Speed -5",
+              "Fighter, Cleric", "Primary Weapon",
+              "Double-Handed", "Neckles",
+              "0.6s/0.56s/0.75s",
+              "If you are reading This . Then It means that I finished Image generator script! Was fun! and not that hard!",
+              [["Up to 5 extra enchantments"], [
+                  "+15 additional Dark Magical Damage"], ["Up to 4 extra enchantments"]]
 
-                  )
-    time.sleep(1)
+              )
+#   time.sleep(1)
